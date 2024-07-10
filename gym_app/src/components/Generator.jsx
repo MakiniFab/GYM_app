@@ -49,60 +49,62 @@ function Geneartor(props) {
     
 
     return (
-        <SectionWrapper id={"generate"}header="generate your workout" title={["It\'s", "Bazenga", "O\'clock"]} >
-            <Header index={'01'} title={'Select category'} description={'Pick out the work out you want.'} />
-                <div>
-                {Object.keys(WORKOUTS).map((type, typeIndex) => {
-                    return (
-                        <button onClick={() => {
-                            setMuscles([])
-                            setPoison(type)
-                        }} 
-                        key={typeIndex} >
-                            <p>{type.replaceAll('_', ' ')}</p>
-                        </button>
-                    )
-                })}
-                </div>
-            <Header index={'02'} title={'Lock on target'} description={'Select muscles to completely rip up.'} />
-                
-                <div>
-                    <button onClick={toggleModal} >{muscles.length == 0 ? "Select muscle groups" : 
-                        muscles.join('-')}</button>
-                    {showModal && (
-                        <div>
-                            {(poison === 'individual' ? WORKOUTS
-                            [poison] : Object.keys(WORKOUTS
-                            [poison])).map((muscleGroup,
-                             muscleGroupIndex) => {
-                                return (
-                                    <button onClick={() => {
-                                        updateMuscles(muscleGroup)
-                                    }} 
-                                    key={muscleGroupIndex}>
-                                        <p>{muscleGroup}</p>
-                                    </button>
-                                    )
-                            })}
-                        </div>
-                    )}
-                </div>
-
-            <Header index={'03'} title={'HULKanization'} description={'Select your ultimate objective.'} />
-                <div>
-                    {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
+        <div className="gym__generator-container">
+            <SectionWrapper id={"generate"}header="generate your workout" title={["It\'s", "Bazenga", "O\'clock"]} >
+                <Header index={'01'} title={'Select category'} description={'Pick out the work out you want.'} />
+                    <div>
+                    {Object.keys(WORKOUTS).map((type, typeIndex) => {
                         return (
                             <button onClick={() => {
-                                setGoal(scheme)
+                                setMuscles([])
+                                setPoison(type)
                             }} 
-                            key={schemeIndex} >
-                                <p>{scheme.replaceAll('_', ' ')}</p>
+                            key={typeIndex} >
+                                <p>{type.replaceAll('_', ' ')}</p>
                             </button>
-                            )
-                            })}
-                </div>
-                <Buttons func={updateWorkout} text={"Formulate"}/>
-        </SectionWrapper>
+                        )
+                    })}
+                    </div>
+                <Header index={'02'} title={'Lock on target'} description={'Select muscles to completely rip up.'} />
+                    
+                    <div>
+                        <button onClick={toggleModal} >{muscles.length == 0 ? "Select muscle groups" : 
+                            muscles.join('-')}</button>
+                        {showModal && (
+                            <div>
+                                {(poison === 'individual' ? WORKOUTS
+                                [poison] : Object.keys(WORKOUTS
+                                [poison])).map((muscleGroup,
+                                muscleGroupIndex) => {
+                                    return (
+                                        <button onClick={() => {
+                                            updateMuscles(muscleGroup)
+                                        }} 
+                                        key={muscleGroupIndex}>
+                                            <p>{muscleGroup}</p>
+                                        </button>
+                                        )
+                                })}
+                            </div>
+                        )}
+                    </div>
+
+                <Header index={'03'} title={'HULKanization'} description={'Select your ultimate objective.'} />
+                    <div>
+                        {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
+                            return (
+                                <button onClick={() => {
+                                    setGoal(scheme)
+                                }} 
+                                key={schemeIndex} >
+                                    <p>{scheme.replaceAll('_', ' ')}</p>
+                                </button>
+                                )
+                                })}
+                    </div>
+                    <Buttons func={updateWorkout} text={"Formulate"}/>
+            </SectionWrapper>
+        </div>
     )
 }
 

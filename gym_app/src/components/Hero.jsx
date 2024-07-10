@@ -2,8 +2,8 @@ import Buttons from "./Buttons";
 
 function Hero() {
     return (
-        <div>
-            <div className="flex flex-col gap-4" >
+        <div className="gym__hero-container" >
+            <div className="gym__hero-title" >
                 <p>GET TO EXPERIENCE...</p>
                 <h1 >BAZENGA<span className="text-purple-400" > fitness</span></h1>
             </div>

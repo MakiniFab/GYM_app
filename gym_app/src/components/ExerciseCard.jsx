@@ -9,17 +9,17 @@ function ExerciseCard(props) {
     }
 
     return (
-        <>
-            <div>
+        <div className="gym__exerciseCard-container" >
+            <div className="gym__exerciseCard-title">
                 <h4>0{i + 1}</h4>
                 <h2>{exercise.name.replaceAll('-', ' ')}</h2>
                 <p>{exercise.type}</p>
             </div>
-            <div>
+            <div className="gym__exerciseCard-muscle" >
                 <h3>Muscle Groups</h3>
                 <p>{exercise.muscles.join(' & ')}</p>
             </div>
-            <div>
+            <div className="gym__exerciseCard-description" >
                 {exercise.description.split('_').map((val) => {
                     return (
                         <div>
@@ -28,7 +28,7 @@ function ExerciseCard(props) {
                     )
                 })}
             </div>
-            <div>
+            <div className="gym__exerciseCard-info">
                 {['reps', 'rest', 'tempo'].map(info => {
                     return (
                         <div key={info}>
@@ -42,7 +42,7 @@ function ExerciseCard(props) {
                     <p>{setsCompleted} / 5</p>
                 </button>
             </div>
-        </>
+        </div>
     )
 }
 
